@@ -20,4 +20,5 @@ urlpatterns = [
     path('register/', views.register),
     path('imagecode/', views.change_captcha),
     path('smscode/', views.get_sms),
+    path('smscode/', views.logon),
 ]
