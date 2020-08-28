@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <!-- 网站主语言 -->
 <html lang="zh-cn">
-
 <head>
     <!-- 网站采用的字符编码 -->
     <meta charset="utf-8">
     <!-- 网站标题 -->
     <title>注册</title>
+    {% load static %}
     <!-- 引入bootstrap的css文件 -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
     <!-- 引入vuejs -->
-    <script type="text/javascript" src="../static/js/vue-2.5.16.js"></script>
-    <script type="text/javascript" src="../static/js/axios-0.18.0.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/vue-2.5.16.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/axios-0.18.0.min.js' %}"></script>
 </head>
 <body>
 <div id="app">
-
 
 <!-- 定义导航栏 -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -40,6 +39,7 @@
         <div class="col-12">
             <div class="col-6">
                 <form class="login" id="login_form" method="POST">
+                    {% csrf_token %}
                     <!--手机号-->
                     <div class="form-group">
                         <label >手机号: </label>
@@ -97,13 +97,13 @@
 <!-- Footer -->
 <footer class="py-3 bg-dark" id="footer">
     <div class="container">
-        <h5 class="m-0 text-center text-white">Copyright @ qiruihua</h5>
+        <h5 class="m-0 text-center text-white">Copyright @ Aaron Zang</h5>
     </div>
 </footer>
 </div>
 <!-- 引入js -->
-<script type="text/javascript" src="../static/js/host.js"></script>
-<script type="text/javascript" src="../static/js/common.js"></script>
-<script type="text/javascript" src="../static/js/register.js"></script>
+<script type="text/javascript" src="{% static 'js/host.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/common.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/register.js' %}"></script>
 </body>
 </html>

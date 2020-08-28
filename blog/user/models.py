@@ -3,15 +3,21 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class User(AbstractUser):
-    mobile = models.CharField(max_length=11, unique=True, blank=False)
-    img = models.ImageField(upload_to='images/%Y%m%d/', blank=True)
-    description = models.CharField(max_length=500, blank=True)
+    mobile = models.CharField(max_length=11, unique=True, null=False, blank=False)
+    # Upload images to sub folders created by year-month-day
+    img = models.ImageField(upload_to='images/%Y%m%d/', null=True, blank=True)
+    description = models.TextField(max_length=500, null=True, blank=True)
+
+    # modify authentication field
+    USERNAME_FIELD = 'mobile'
 
     class Meta:
-           db_table = 'users'
+        db_table = 'User'
+        verbose_name = 'User Info'
+        verbose_name_plural = verbose_name
+
 
     def __str__(self):
         return self.mobile
-
 
 

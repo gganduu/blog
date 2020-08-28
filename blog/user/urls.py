@@ -17,8 +17,7 @@ from user import views
 from django.urls import path
 
 urlpatterns = [
-    path('register/', views.register),
-    path('imagecode/', views.change_captcha),
-    path('smscode/', views.get_sms),
-    path('smscode/', views.logon),
+    path('register/', views.RegisterView.as_view(), name='register'),
+    path('imagecode/', views.ChangeImgCodeView.as_view(), name='imagecode'),
+    path('smscode/', views.SendSMSView.as_view(), name='smscode'),
 ]
