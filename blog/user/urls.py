@@ -20,4 +20,5 @@ urlpatterns = [
     path('register/', views.RegisterView.as_view(), name='register'),
     path('imagecode/', views.ChangeImgCodeView.as_view(), name='imagecode'),
     path('smscode/', views.SendSMSView.as_view(), name='smscode'),
+    path('test/', views.TestView.as_view(), name='test'),
 ]

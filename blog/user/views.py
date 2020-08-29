@@ -8,6 +8,7 @@ import random
 import re
 from user.models import User
 from libs.yuntongxun.sms import CCP
+from user.tasks import sendmail
 
 import logging
 logger = logging.getLogger('blog')
@@ -76,5 +77,10 @@ class SendSMSView(View):
         # save the sms code in redis for following register authentication
         redis_conn.setex('mob:'+str(mobile), 300, sms_code)
         return JsonResponse({'code': RETCODE.OK})
+
+class TestView(View):
+    def get(self, request):
+        sendmail.delay('aa@163.com')
+        return HttpResponse('email has sent.')
 
 
