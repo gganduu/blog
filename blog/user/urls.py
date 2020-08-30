@@ -20,5 +20,10 @@ urlpatterns = [
     path('register/', views.RegisterView.as_view(), name='register'),
     path('imagecode/', views.ChangeImgCodeView.as_view(), name='imagecode'),
     path('smscode/', views.SendSMSView.as_view(), name='smscode'),
+    path('index/', views.IndexView.as_view(), name='index'),
+    path('login/', views.LoginView.as_view(), name='login'),
+    path('logout/', views.LogoutView.as_view(), name='logout'),
+    path('forget_password/', views.ForgetPasswordView.as_view(), name='forget_password'),
+    path('center/', views.CenterView.as_view(), name='center'),
     path('test/', views.TestView.as_view(), name='test'),
 ]

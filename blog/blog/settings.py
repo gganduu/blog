@@ -190,6 +190,15 @@ LOGGING = {
 # Replace authentication model
 AUTH_USER_MODEL = 'user.User'
 
+# Replace default login URL
+LOGIN_URL = '/login/'
+
+# Set saved media file root
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Replace default login URL
+MEIDA_URL = '/media/'
+
 # Celery settings
 # Celery broker redis://redis ip:port/number of db
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'

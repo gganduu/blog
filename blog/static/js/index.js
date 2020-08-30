@@ -5,13 +5,12 @@ var vm = new Vue({
     data: {
         host,
         show_menu:false,
-        is_login:true,
+        is_login:false,
         username:''
     },
     mounted(){
         this.username=getCookie('username');
-        // this.is_login=getCookie('is_login');
-        this.is_login=true
+        this.is_login=getCookie('is_login');
     },
     methods: {
         //显示下拉菜单
