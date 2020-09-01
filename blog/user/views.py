@@ -44,7 +44,7 @@ class RegisterView(View):
             logger.error(e)
             return HttpResponse('code:'+str(RETCODE.THROTTLINGERR))
         login(request, user)
-        response = redirect(reverse('user:index'))
+        response = redirect(reverse('blogs:index'))
         response.set_cookie('is_login', True)
         response.set_cookie('username', user.username, max_age=7*24*3600)
         return response
@@ -85,10 +85,6 @@ class SendSMSView(View):
         redis_conn.setex('mob:'+str(mobile), 300, sms_code)
         return JsonResponse({'code': RETCODE.OK})
 
-class IndexView(View):
-    def get(self, request):
-        return render(request, 'user/index.html')
-
 class LoginView(View):
     def get(self, request):
         return render(request, 'user/login.html')
@@ -107,21 +103,21 @@ class LoginView(View):
         if next_page:
             response = redirect(next_page)
         else:
-            response = redirect(reverse('user:index'))
+            response = redirect(reverse('blogs:index'))
         if remember == 'on':
             request.session.set_expiry(None)
             response.set_cookie('is_login', True)
-            response.set_cookie('username', user.username)
+            response.set_cookie('username', user.username, max_age=7*24*3600)
         else:
             request.session.set_expiry(0)
             response.set_cookie('is_login', True)
-            response.set_cookie('username', user.username)
+            response.set_cookie('username', user.username, max_age=7*24*3600)
         return response
 
 class LogoutView(View):
     def get(self, request):
         logout(request)
-        response = redirect(reverse('user:index'))
+        response = redirect(reverse('blogs:index'))
         response.delete_cookie('is_login')
         response.delete_cookie('username')
         return response
@@ -158,7 +154,7 @@ class ForgetPasswordView(View):
             user.set_password(raw_password=passwd)
             user.save()
         login(request, user)
-        response = redirect(reverse('user:index'))
+        response = redirect(reverse('blogs:index'))
         response.set_cookie('is_login', True)
         response.set_cookie('username', user.username, max_age=7 * 24 * 3600)
         return response
@@ -188,7 +184,7 @@ class CenterView(LoginRequiredMixin, View):
             logger.error(e)
             return HttpResponseBadRequest('code:'+str(RETCODE.THROTTLINGERR))
         response = redirect(reverse('user:center'))
-        response.set_cookie('username', user.username)
+        response.set_cookie('username', user.username, max_age=7*24*3600)
         return response
 
 

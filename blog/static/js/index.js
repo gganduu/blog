@@ -5,8 +5,8 @@ var vm = new Vue({
     data: {
         host,
         show_menu:false,
+        username:'',
         is_login:false,
-        username:''
     },
     mounted(){
         this.username=getCookie('username');

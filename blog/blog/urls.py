@@ -18,7 +18,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(('user.urls', 'user'), namespace='user'))
+    path('', include(('user.urls', 'user'), namespace='user')),
+    path('', include(('blogs.urls', 'blogs'), namespace='blogs')),
 ]
 # add media url for whole project
 from django.conf import settings

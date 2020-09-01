@@ -9,4 +9,5 @@ class RETCODE:
     MOBILEERR           = "4007"			#手机号错误
     SMSCODERR           = "4008"			#短信验证码错误
     SESSIONERR          = "4009"			#未登录
+    DATABASEERR          = "4010"			#数据库错误
 
