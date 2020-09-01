@@ -68,7 +68,8 @@ class WriteBlog(LoginRequiredMixin, View):
         except Exception as e:
             logger.error(e)
             return HttpResponseBadRequest('code:'+str(RETCODE.DATABASEERR))
-        return redirect(reverse('blogs:detail'))
+        path = reverse('blogs:detail')+'?article_id={}'.format(article.id)
+        return redirect(path)
 
 class DetailView(View):
     def get(self, request):

@@ -81,7 +81,7 @@
             <div class="alert alert-success"><div>作者：<span>{{user.username}}</span></div><div>浏览：{{article.num_viewed}}</div></div>
             <!-- 文章正文 -->
             <div class="col-12" style="word-break: break-all;word-wrap: break-word;">
-                <p><p>{{article.content}}</p></p>
+                <p>{{article.content|safe}}</p>
             </div>
             <br>
             <!-- 发表评论 -->
